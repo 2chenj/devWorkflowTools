@@ -25,6 +25,8 @@ Plugin 'tpope/vim-fugitive'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 
+"colorscheme
+Plugin 'morhetz/gruvbox'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 
@@ -59,6 +61,9 @@ Plugin 'preservim/nerdtree'
 "plugin to comment files
 Plugin 'tpope/vim-commentary'
 
+Plugin 'SQLComplete.vim'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -75,14 +80,15 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "************************************built in*********************
-
-
 " Largeur de l'indentation avec <tab>
 set softtabstop=2	
 
 "show line numbers
 set number
 
+"scheme
+colo desert
+colo gruvbox
 "recherche en live
 set incsearch
 
@@ -98,10 +104,14 @@ command! MakeTags !ctags -R .
 "let vim users be able to reach in sub directories
 set path+=**
 
+"remarque copier coller 
+"vnoremap <C-c> "+y
+"map <C-v> "+p
+"vnoremap <C-c> "*y : let @+=@*<CR>
+
+
 
 "******************************** end of built int*****************
-
-
 
 "*************************************** merlin related********************
 "working merlin path
@@ -147,3 +157,16 @@ let g:auto_save_events = ["InsertLeave"] "save every modification in insert mode
   "'CompleteDone' will also trigger a save after every completion event
   
 "********************end of vim-auto-save setting*****************************
+
+"map to go to function def by gd meaning to me as get definition
+let mapleader=" "
+nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+
+"open NEERDTree always
+"autocmd VimEnter * NERDTree
+
+"set spelllan to check
+set spelllang=en_us,fr
+
+"spell checkin option
+set spell
