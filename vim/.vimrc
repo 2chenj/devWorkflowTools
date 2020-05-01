@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"let vim users be able to reach in sub directories
+set path+=**
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -101,15 +104,13 @@ set wildmenu
 "create the 'tags' file (may need to install ctags first)
 command! MakeTags !ctags -R .
 
-"let vim users be able to reach in sub directories
-set path+=**
-
 "remarque copier coller 
 "vnoremap <C-c> "+y
 "map <C-v> "+p
 "vnoremap <C-c> "*y : let @+=@*<CR>
 
-
+"able classical copy paste (sharedclipboard)
+set clipboard=unnamedplus
 
 "******************************** end of built int*****************
 
@@ -160,10 +161,21 @@ let g:auto_save_events = ["InsertLeave"] "save every modification in insert mode
 
 "map to go to function def by gd meaning to me as get definition
 let mapleader=" "
-nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap  <Leader>gd :YcmCompleter GoTo<CR>
+
+nnoremap  <Leader>fi :YcmCompleter FixIt<CR>
+"nnoremap <silent> <Leader>+ :exe vertical resize  . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>- :exe vertical resize  . (winheight(0) * 2/3)<CR>
+
+map <c-n> <c-w><
+map <c-m> <c-w>>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 "open NEERDTree always
-"autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
+autocmd bufenter * if (winnr("$")==1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q| endif
 
 "set spelllan to check
 set spelllang=en_us,fr
