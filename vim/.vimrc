@@ -6,7 +6,7 @@ set path+=**
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
+set encoding=UTF-8
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -38,6 +38,11 @@ Plugin 'morhetz/gruvbox'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+"show icons in vim neerttree
+"Plugin 'ryanoasis/vim-devicons'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'tiagofumo/vim-nerdtree-syntax-Highlight'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -66,6 +71,8 @@ Plugin 'tpope/vim-commentary'
 
 Plugin 'SQLComplete.vim'
 
+"slime send selected to opned terminal and evalIt
+Plugin 'jpalardy/vim-slime'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -170,6 +177,8 @@ nnoremap  <Leader>fi :YcmCompleter FixIt<CR>
 map <c-n> <c-w><
 map <c-m> <c-w>>
 
+"set target terminal for slime in x11
+let g:slime_target="x11"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
